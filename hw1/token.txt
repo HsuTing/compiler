@@ -1,0 +1,95 @@
+Line 1:
+   <Keyword>     : int
+   <Identifier>  : b
+   <Special>     : ;
+Line 2:
+   <Keyword>     : int
+   <Identifier>  : main
+   <Special>     : (
+   <Special>     : )
+   <Special>     : {
+Line 3:
+   <Keyword>     : int
+   <Identifier>  : a
+   <Special>     : ;
+Line 4:
+   <Identifier>  : a
+   <Operator>    : =
+   <Number>      : 3
+   <Special>     : ;
+Line 5:
+   <Identifier>  : b
+   <Operator>    : =
+   <Number>      : 1
+   <Special>     : ;
+Line 6:
+   <Keyword>     : char
+   <Identifier>  : c
+   <Operator>    : =
+   <Char>        : '\n'
+   <Special>     : ;
+Line 7:
+   <Keyword>     : char
+   <Identifier>  : d
+   <Operator>    : =
+   <Char>        : 's'
+   <Special>     : ;
+Line 8:
+   <Keyword>     : double
+   <Identifier>  : e
+   <Operator>    : =
+   <Number>      : 123.4
+   <Special>     : ;
+Line 9:
+   <Keyword>     : double
+   <Identifier>  : f
+   <Operator>    : =
+   <Error>       : .1234
+   <Special>     : ;
+Line 10:
+   <Keyword>     : int
+   <Identifier>  : f
+   <Special>     : [
+   <Number>      : 10
+   <Special>     : ]
+   <Special>     : ;
+Line 11:
+   <Keyword>     : if
+   <Special>     : (
+   <Identifier>  : b
+   <Operator>    : <
+   <Identifier>  : a
+   <Special>     : )
+   <Special>     : {
+Line 12:
+   <Identifier>  : a
+   <Operator>    : =
+   <Identifier>  : a
+   <Operator>    : +
+   <Number>      : 1
+   <Special>     : ;
+Line 13:
+   <Special>     : }
+Line 14:
+   <Keyword>     : else
+   <Special>     : {
+Line 15:
+   <Identifier>  : b
+   <Operator>    : =
+   <Number>      : 0
+   <Special>     : ;
+Line 16:
+   <Special>     : }
+Line 17:
+   <Identifier>  : b
+   <Operator>    : =
+   <Identifier>  : b
+   <Operator>    : *
+   <Number>      : 10
+   <Special>     : ;
+Line 18:
+   <Keyword>     : return
+   <Number>      : 0
+   <Special>     : ;
+Line 19:
+   <Special>     : }
