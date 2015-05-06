@@ -13,6 +13,10 @@ void Data::set_name(string s) {
 	name = s;
 }
 
+void Data::set_check(int i, int j) {
+	check[i] = j;
+}
+
 void Data::set_subdata(int i, string s) {
 	subdata[i] = s;
 }

@@ -9,12 +9,15 @@ class Data {
 		Data();
 		void set_max(int i);
 		void set_name(string s);
+		void set_check(int i, int j);
 		void set_subdata(int i, string s);
 		int get_max();
 		string get();
+		string find(int i);
 		string at(int i);
 	private:
 		int max;
 		string name;
-		string subdata[100];
+		int check[50];
+		string subdata[50];
 };
