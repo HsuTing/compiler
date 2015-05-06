@@ -7,11 +7,20 @@
 using namespace std;
 
 int count_index();
-void input_grammar();
+void input_grammar(Data index[]);
 
 int main(void) {
-	cout << count_index() << endl;
-	input_grammar();
+	int max = count_index();
+	Data index[max];
+	input_grammar(index);
+
+	for(int i = 0; i < max; i++) {
+		cout << index[i].get() << ": ";
+		for(int j = 0; j < index[i].get_max(); j++) {
+			cout << index[i].at(j) << " ";
+		}
+		cout << endl;
+	}
 
 	return 0;
 }
@@ -37,8 +46,9 @@ int count_index() {
 	return count;
 }
 
-void input_grammar() {
+void input_grammar(Data index[]) {
 	ifstream fp("grammar.txt");
+	int count = -1, position = 0;
 
 	if(fp == NULL) {
 		cout << "Can not find file." << endl;
@@ -47,8 +57,27 @@ void input_grammar() {
 		string line;
 
 		while(getline(fp, line)) {
-			cout << line.at(0) << endl;
+			if(line.at(0) != '\t') {
+				if(count != -1) {
+					index[count].set_max(position);
+				}
+
+				count++;
+				position = 0;
+				index[count].set_name(line);
+			}
+			else {
+				istringstream fp_word(line);
+				string word;
+
+				while(fp_word >> word) {
+					index[count].set_subdata(position, word);
+					position++;
+				}
+			}
 		}
+
+		index[count].set_max(position);
 	}
 
 	fp.close();

@@ -5,12 +5,20 @@ Data::Data() {
 	name = "";
 }
 
+void Data::set_max(int i) {
+	max = i;
+}
+
 void Data::set_name(string s) {
 	name = s;
 }
 
 void Data::set_subdata(int i, string s) {
 	subdata[i] = s;
+}
+
+int Data::get_max() {
+	return max;
 }
 
 string Data::get() {
