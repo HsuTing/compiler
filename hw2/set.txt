@@ -1,0 +1,28 @@
+First
+Program             : int char double float epsilon 
+DeclList            : int char double float epsilon 
+DeclList'           : int char double float 
+Decl                : ; [ ( 
+VarDecl             : int char double float 
+VarDecl'            : ; [ 
+FunDecl             : ( 
+VarDeclList         : int char double float epsilon 
+ParamDeclList       : int char double float epsilon 
+ParamDeclListTail   : int char double float 
+ParamDeclListTail'  : , epsilon 
+ParamDecl           : int char double float 
+ParamDecl'          : [ epsilon 
+Block               : { 
+Type                : int char double float 
+StmtList            : ; - ! num ( id return break if while { print 
+StmtList'           : ; - ! num ( id return break if while { print epsilon 
+Stmt                : ; - ! num ( id return break if while { print 
+Expr                : - ! num ( id 
+ExprIdTail          : + - * / == != < <= > >= && || epsilon ( [ = 
+ExprArrayTail       : + - * / == != < <= > >= && || epsilon = 
+Expr'               : + - * / == != < <= > >= && || epsilon 
+ExprList            : - ! num ( id epsilon 
+ExprListTail        : - ! num ( id 
+ExprListTail'       : , epsilon 
+UnaryOp             : - ! 
+BinOp               : + - * / == != < <= > >= && || 

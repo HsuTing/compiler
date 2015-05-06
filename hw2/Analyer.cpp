@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <iomanip>
 #include "Data.h"
 using namespace std;
 
@@ -15,11 +16,9 @@ int main(void) {
 	int max = count_index();
 	Data index[max];
 	input_grammar(index);
+	first(index, max);
 
-	for(int i = 0; i < max; i++) {
-	}
-
-	for(int i = 0; i < max; i++) {
+	/*for(int i = 0; i < max; i++) {
 		cout << index[i].get() << ": ";
 		for(int j = 0; j < index[i].get_max(); j++) {
 			cout << index[i].find(j) << " ";
@@ -33,7 +32,7 @@ int main(void) {
 		cout << endl;
 
 		cout << index[i].get_check_max() << endl;
-	}
+	}*/
 
 	return 0;
 }
@@ -89,8 +88,8 @@ void input_grammar(Data index[]) {
 					index[count].set_subdata(position, word);
 					position++;
 				}
-				index[count].set_check(position - 1, check);
 				check++;
+				index[count].set_check(position, check);
 			}
 		}
 
@@ -110,5 +109,49 @@ int first_check(Data index[], int max, string name) {
 	return -1;
 }
 
+void find_first(Data index[], int max, string name) {
+	int temp = first_check(index, max, name), check = 0;
+
+	if(temp == -1) {
+		ofstream fp("set.txt", ios::app);
+		fp << name << " ";
+		fp.close();
+		return;
+	}
+	else {
+		for(int i = 0; i < index[temp].get_check_max(); i++) {
+			for(int j = 0; j < index[temp].get_max(); j++) {
+				if(index[temp].find(j) == i) {
+					find_first(index, max, index[temp].at(j));
+					break;
+				}
+			}
+		}
+	}
+}
+
 void first(Data index[], int max) {
+	ofstream fp("set.txt");
+	fp << "First" << endl;
+	fp.close();
+
+	for(int i = 0; i < max; i++) {
+		ofstream fp1("set.txt", ios::app);
+		fp1.setf(ios::left);
+		fp1 << setw(20) << index[i].get() << ": ";
+		fp1.close();
+
+		for(int j = 0; j < index[i].get_check_max(); j++) {
+			for(int k = 0; k < index[i].get_max(); k++) {
+				if(index[i].find(k) == j) {
+					find_first(index, max, index[i].at(k));
+					break;
+				}
+			}
+		}
+
+		ofstream fp2("set.txt", ios::app);
+		fp2 << endl;
+		fp2.close();
+	}
 }
