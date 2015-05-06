@@ -11,12 +11,14 @@ int count_index();
 void input_grammar(Data index[]);
 int first_check(Data index[], int max, string name);
 void first(Data index[], int max);
+void follow(Data index[], int max);
 
 int main(void) {
 	int max = count_index();
 	Data index[max];
 	input_grammar(index);
 	first(index, max);
+	follow(index, max);
 
 	/*for(int i = 0; i < max; i++) {
 		cout << index[i].get() << ": ";
@@ -149,6 +151,25 @@ void first(Data index[], int max) {
 				}
 			}
 		}
+
+		ofstream fp2("set.txt", ios::app);
+		fp2 << endl;
+		fp2.close();
+	}
+}
+
+void follow(Data index[], int max) {
+	ofstream fp("set.txt", ios::app);
+	fp << endl;
+	fp << "Follow" << endl;
+	fp.close();
+
+	for(int i = 0; i < max; i++) {
+		ofstream fp1("set.txt", ios::app);
+		fp1.setf(ios::left);
+		fp1 << setw(20) << index[i].get() << ": ";
+		fp1.close();
+
 
 		ofstream fp2("set.txt", ios::app);
 		fp2 << endl;

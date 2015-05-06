@@ -26,3 +26,32 @@ ExprListTail        : - ! num ( id
 ExprListTail'       : , epsilon 
 UnaryOp             : - ! 
 BinOp               : + - * / == != < <= > >= && || 
+
+Follow
+Program             : 
+DeclList            : 
+DeclList'           : 
+Decl                : 
+VarDecl             : 
+VarDecl'            : 
+FunDecl             : 
+VarDeclList         : 
+ParamDeclList       : 
+ParamDeclListTail   : 
+ParamDeclListTail'  : 
+ParamDecl           : 
+ParamDecl'          : 
+Block               : 
+Type                : 
+StmtList            : 
+StmtList'           : 
+Stmt                : 
+Expr                : 
+ExprIdTail          : 
+ExprArrayTail       : 
+Expr'               : 
+ExprList            : 
+ExprListTail        : 
+ExprListTail'       : 
+UnaryOp             : 
+BinOp               : 
