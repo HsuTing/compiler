@@ -3,6 +3,7 @@
 Data::Data() {
 	max = 0;
 	name = "";
+	memset(check, 0, sizeof(check));
 }
 
 void Data::set_max(int i) {
@@ -27,6 +28,10 @@ int Data::get_max() {
 
 string Data::get() {
 	return name;
+}
+
+int Data::find(int i) {
+	return check[i];
 }
 
 string Data::at(int i) {
