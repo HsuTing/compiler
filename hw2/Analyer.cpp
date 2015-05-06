@@ -19,7 +19,7 @@ int main(void) {
 	for(int i = 0; i < max; i++) {
 	}
 
-	/*for(int i = 0; i < max; i++) {
+	for(int i = 0; i < max; i++) {
 		cout << index[i].get() << ": ";
 		for(int j = 0; j < index[i].get_max(); j++) {
 			cout << index[i].find(j) << " ";
@@ -31,7 +31,9 @@ int main(void) {
 			cout << index[i].at(j) << " ";
 		}
 		cout << endl;
-	}*/
+
+		cout << index[i].get_check_max() << endl;
+	}
 
 	return 0;
 }
@@ -71,6 +73,7 @@ void input_grammar(Data index[]) {
 			if(line.at(0) != '\t') {
 				if(count != -1) {
 					index[count].set_max(position);
+					index[count].set_check_max(check);
 				}
 
 				count++;
@@ -92,6 +95,7 @@ void input_grammar(Data index[]) {
 		}
 
 		index[count].set_max(position);
+		index[count].set_check_max(check);
 	}
 
 	fp.close();
@@ -107,7 +111,4 @@ int first_check(Data index[], int max, string name) {
 }
 
 void first(Data index[], int max) {
-	for(int j = 0; j < index[i].get_max(); j++) {
-		int check = 0;
-	}
 }

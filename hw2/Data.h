@@ -15,7 +15,7 @@ class Data {
 		int get_max();
 		string get();
 		int find(int i);
-		int get_check_num();
+		int get_check_max();
 		string at(int i);
 	private:
 		int max;

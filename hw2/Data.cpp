@@ -18,6 +18,10 @@ void Data::set_check(int i, int j) {
 	check[i] = j;
 }
 
+void Data::set_check_max(int i) {
+	check_max = i;
+}
+
 void Data::set_subdata(int i, string s) {
 	subdata[i] = s;
 }
@@ -32,6 +36,10 @@ string Data::get() {
 
 int Data::find(int i) {
 	return check[i];
+}
+
+int Data::get_check_max() {
+	return check_max;
 }
 
 string Data::at(int i) {
