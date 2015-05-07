@@ -28,30 +28,30 @@ UnaryOp             : - !
 BinOp               : + - * / == != < <= > >= && || 
 
 Follow
-Program             : 
-DeclList            : 
-DeclList'           : 
-Decl                : 
-VarDecl             : 
-VarDecl'            : 
-FunDecl             : 
-VarDeclList         : 
-ParamDeclList       : 
-ParamDeclListTail   : 
-ParamDeclListTail'  : 
-ParamDecl           : 
-ParamDecl'          : 
-Block               : 
-Type                : 
-StmtList            : 
-StmtList'           : 
-Stmt                : 
-Expr                : 
-ExprIdTail          : 
-ExprArrayTail       : 
-Expr'               : 
-ExprList            : 
-ExprListTail        : 
-ExprListTail'       : 
-UnaryOp             : 
-BinOp               : 
+Program             : $ 
+DeclList            : int char double float $ 
+DeclList'           : int char double float $ 
+Decl                : $ 
+VarDecl             : int char double float $ 
+VarDecl'            : $ 
+FunDecl             : $ 
+VarDeclList         : int char double float $ 
+ParamDeclList       : $ 
+ParamDeclListTail   : int char double float $ 
+ParamDeclListTail'  : $ 
+ParamDecl           : $ 
+ParamDecl'          : $ 
+Block               : { print id $ 
+Type                : $ 
+StmtList            : $ 
+StmtList'           : $ 
+Stmt                : ; - ! num ( id return break if while { print while ( - ! num ( id ) ; - ! num ( id return break if while { print while ( - ! num ( id ) ; - ! num ( id return break if while { print $ 
+Expr                : ; - ! num ( id return break if while { print while ( - ! num ( id ) ; - ! num ( id return break if while { print + - * / == != < <= > >= && || id + - * / == != < <= > >= && || = = - ! num ( id $ 
+ExprIdTail          : $ 
+ExprArrayTail       : + - * / == != < <= > >= && || = = $ 
+Expr'               : + - * / == != < <= > >= && || ( - ! num ( id ) + - * / == != < <= > >= && || id + - * / == != < <= > >= && || [ - ! num ( id ] $ 
+ExprList            : $ 
+ExprListTail        : - ! num ( id $ 
+ExprListTail'       : $ 
+UnaryOp             : - ! num ( id num $ 
+BinOp               : - ! num ( id $ 
