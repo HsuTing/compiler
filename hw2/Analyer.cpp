@@ -11,10 +11,10 @@ int count_index();
 void input_grammar(Data index[]);
 int first_check(Data index[], int max, string name);
 void find(Data index[], int max, string name);
-void find(Data index[], Data tempdata[], int max, string name, int position);
+void find(Data index[], Data tempdata[], int check[], int max, string name, int position);
 void first(Data index[], int max);
-void find_follow(Data index[], Data tempdata[], int max, string name, int position);
-void follow(Data index[], Data tempdata[], int max);
+void find_follow(Data index[], Data tempdata[], int check[], int max, string name, int position);
+void follow(Data tempdata[], int max);
 
 int main(void) {
 	int max = count_index();
@@ -23,9 +23,14 @@ int main(void) {
 	first(index, max);
 
 	for(int i = 0; i < max; i++) {
+		int check[max];
+		memset(check, 0, sizeof(check));
+
 		tempdata[i].set_name(index[i].get());
-		find_follow(index, tempdata, max, index[i].get(), i);
+		find_follow(index, tempdata, check, max, index[i].get(), i);
 	}
+
+	follow(tempdata, max);
 
 	/*for(int i = 0; i < max; i++) {
 		cout << index[i].get() << ": ";
@@ -46,6 +51,10 @@ int main(void) {
 	for(int i = 0; i < max; i++) {
 		cout << tempdata[i].get() << ": ";
 		for(int j = 0; j < tempdata[i].get_max(); j++) {
+			if(tempdata[i].at(j) == " ") {
+				continue;
+			}
+
 			cout << tempdata[i].at(j) << " ";
 		}
 		cout << endl;
@@ -127,7 +136,7 @@ int first_check(Data index[], int max, string name) {
 }
 
 void find(Data index[], int max, string name) {
-	int temp = first_check(index, max, name), check = 0;
+	int temp = first_check(index, max, name);
 
 	if(temp == -1) {
 		ofstream fp("set.txt", ios::app);
@@ -147,14 +156,10 @@ void find(Data index[], int max, string name) {
 	}
 }
 
-void find(Data index[], Data tempdata[], int max, string name, int position) {
-	int temp = first_check(index, max, name), check = 0;
+void find(Data index[], Data tempdata[], int check[], int max, string name, int position) {
+	int temp = first_check(index, max, name);
 
 	if(temp == -1) {
-		if(name == "epsilon") {
-			return;
-		}
-
 		temp = tempdata[position].get_max();
 		tempdata[position].set_subdata(temp, name);
 		tempdata[position].set_max(temp + 1);
@@ -164,7 +169,7 @@ void find(Data index[], Data tempdata[], int max, string name, int position) {
 		for(int i = 0; i < index[temp].get_check_max(); i++) {
 			for(int j = 0; j < index[temp].get_max(); j++) {
 				if(index[temp].find(j) == i) {
-					find(index, tempdata, max, index[temp].at(j), position);
+					find(index, tempdata, check, max, index[temp].at(j), position);
 					break;
 				}
 			}
@@ -198,19 +203,48 @@ void first(Data index[], int max) {
 	}
 }
 
-void find_follow(Data index[], Data tempdata[], int max, string name, int position) {
+void find_follow(Data index[], Data tempdata[], int check[], int max, string name, int position) {
 	for(int i = 0; i < max; i++) {
 		for(int j = 0; j < index[i].get_max(); j++) {
 			if(index[i].at(j) == name) {
 				if(index[i].find(j + 1) != index[i].find(j)) {
+					if(index[i].get() != name && check[i] != 1) {
+						check[i] = 1;
+						find_follow(index, tempdata, check, max, index[i].get(), position);
+					}
 				}
-				else if(index[i].get_max() != j + 1){
-					find(index, tempdata, max, index[i].at(j + 1), position);
+				else if(j == index[i].get_max() - 1) {
+					if(index[i].get() != name && check[i] != 1) {
+						check[i] = 1;
+						find_follow(index, tempdata, check, max, index[i].get(), position);
+					}
+				}
+				else if(index[i].get_max() != j + 1) {
+					find(index, tempdata, check, max, index[i].at(j + 1), position);
+
+					int temp = -1;
+					for(int k = 0; k < tempdata[i].get_max(); k++) {
+						if(tempdata[i].at(k) == "epsilon") {
+							temp = k;
+						}
+					}
 				}
 			}
 		}
 	}
 }
 
-void follow(Data index[], Data tempdata[], int max) {
+void follow(Data tempdata[], int max) {
+	for(int i = 0; i < max; i++) {
+		for(int j = 1; j < tempdata[i].get_max(); j++) {
+			for(int k = 0; k < j; k++) {
+				if(tempdata[i].at(j) == tempdata[i].at(k)) {
+					tempdata[i].set_subdata(k, " ");
+				}
+			}
+			if(tempdata[i].at(j) == "epsilon") {
+				tempdata[i].set_subdata(j, " ");
+			}
+		}
+	}
 }

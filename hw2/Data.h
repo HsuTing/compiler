@@ -22,5 +22,5 @@ class Data {
 		string name;
 		int check[50];
 		int check_max;
-		string subdata[50];
+		string subdata[200];
 };
