@@ -15,7 +15,7 @@ void find(Data index[], Data tempdata[], int check[], int max, string name, int 
 void first(Data index[], int max);
 void find_follow(Data index[], Data tempdata[], int check[], int max, string name, int position);
 void follow(Data tempdata[], int max);
-void lltable(int max);
+void lltable(Data index[], int max);
 
 int main(void) {
 	int max = count_index();
@@ -32,7 +32,7 @@ int main(void) {
 	}
 
 	follow(tempdata, max);
-	lltable(max);
+	lltable(index, max);
 
 	/*for(int i = 0; i < max; i++) {
 		cout << index[i].get() << ": ";
@@ -271,7 +271,7 @@ void follow(Data tempdata[], int max) {
 	fp.close();
 }
 
-void lltable(int max) {
+void lltable(Data index[], int max) {
 	Data first[max], follow[max];
 	ifstream fp("set.txt");
 
@@ -295,13 +295,44 @@ void lltable(int max) {
 		first[i].set_max(count);
 	}
 
+	getline(fp, line);
+	getline(fp, line);
 	for(int i = 0; i < max; i++) {
-		cout << first[i].get() << ": ";
-		for(int j = 0; j < first[i].get_max(); j++) {
-			cout << first[i].at(j) << " ";
+		getline(fp, line);
+ 		istringstream fp_word(line);
+		string word;
+		int count = 0;
+
+		fp_word >> word;
+		follow[i].set_name(word);
+		fp_word >> word;
+
+		while(fp_word >> word) {
+			follow[i].set_subdata(count, word);
+			count++;
 		}
-		cout << endl;
+		follow[i].set_max(count);
 	}
 
 	fp.close();
+	ofstream fout("lltable.txt");
+	fout.setf(ios::left);
+
+	fout << "lltable" << endl;
+	for(int i = 0; i < max; i++) {
+		int check[ first[i].get_max() ];
+		for(int j = 0; j < first[i].get_max(); j++) {
+			if(first[i].at(j) == "epsilon") {
+			}
+			else {
+				fout << setw(20) << first[i].get() << "| ";
+				fout << setw(20) << first[i].at(j) << "| ";
+				fout << index[i].get() << "->";
+				fout << index[i].at(0) << " ";
+				fout << endl;
+			}
+		}
+	}
+
+	fout.close();
 }
