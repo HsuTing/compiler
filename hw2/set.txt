@@ -1,4 +1,5 @@
 First
+s                   : int char double float epsilon 
 Program             : int char double float epsilon 
 DeclList            : int char double float epsilon 
 DeclList'           : int char double float 
@@ -26,32 +27,3 @@ ExprListTail        : - ! num ( id
 ExprListTail'       : , epsilon 
 UnaryOp             : - ! 
 BinOp               : + - * / == != < <= > >= && || 
-
-Follow
-Program             : $ 
-DeclList            : int char double float $ 
-DeclList'           : int char double float $ 
-Decl                : $ 
-VarDecl             : int char double float $ 
-VarDecl'            : $ 
-FunDecl             : $ 
-VarDeclList         : int char double float $ 
-ParamDeclList       : $ 
-ParamDeclListTail   : int char double float $ 
-ParamDeclListTail'  : $ 
-ParamDecl           : $ 
-ParamDecl'          : $ 
-Block               : { print id $ 
-Type                : $ 
-StmtList            : $ 
-StmtList'           : $ 
-Stmt                : ; - ! num ( id return break if while { print while ( - ! num ( id ) ; - ! num ( id return break if while { print while ( - ! num ( id ) ; - ! num ( id return break if while { print $ 
-Expr                : ; - ! num ( id return break if while { print while ( - ! num ( id ) ; - ! num ( id return break if while { print + - * / == != < <= > >= && || id + - * / == != < <= > >= && || = = - ! num ( id $ 
-ExprIdTail          : $ 
-ExprArrayTail       : + - * / == != < <= > >= && || = = $ 
-Expr'               : + - * / == != < <= > >= && || ( - ! num ( id ) + - * / == != < <= > >= && || id + - * / == != < <= > >= && || [ - ! num ( id ] $ 
-ExprList            : $ 
-ExprListTail        : - ! num ( id $ 
-ExprListTail'       : $ 
-UnaryOp             : - ! num ( id num $ 
-BinOp               : - ! num ( id $ 
