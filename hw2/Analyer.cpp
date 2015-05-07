@@ -15,6 +15,7 @@ void find(Data index[], Data tempdata[], int check[], int max, string name, int 
 void first(Data index[], int max);
 void find_follow(Data index[], Data tempdata[], int check[], int max, string name, int position);
 void follow(Data tempdata[], int max);
+void lltable(int max);
 
 int main(void) {
 	int max = count_index();
@@ -31,6 +32,7 @@ int main(void) {
 	}
 
 	follow(tempdata, max);
+	lltable(max);
 
 	/*for(int i = 0; i < max; i++) {
 		cout << index[i].get() << ": ";
@@ -46,7 +48,7 @@ int main(void) {
 		cout << endl;
 
 		cout << index[i].get_check_max() << endl;
-	}*/
+	}
 
 	for(int i = 0; i < max; i++) {
 		cout << tempdata[i].get() << ": ";
@@ -58,7 +60,7 @@ int main(void) {
 			cout << tempdata[i].at(j) << " ";
 		}
 		cout << endl;
-	}
+	}*/
 
 	return 0;
 }
@@ -247,4 +249,59 @@ void follow(Data tempdata[], int max) {
 			}
 		}
 	}
+
+	ofstream fp("set.txt", ios::app);
+
+	fp.setf(ios::left);
+	fp << endl;
+	fp << "Follow" << endl;
+
+	for(int i = 0; i < max; i++) {
+		fp << setw(20) << tempdata[i].get() << ": ";
+		for(int j = 0; j < tempdata[i].get_max(); j++) {
+			if(tempdata[i].at(j) == " ") {
+				continue;
+			}
+
+			fp << tempdata[i].at(j) << " ";
+		}
+		fp << endl;
+	}
+
+	fp.close();
+}
+
+void lltable(int max) {
+	Data first[max], follow[max];
+	ifstream fp("set.txt");
+
+	string line;
+	getline(fp, line);
+
+	for(int i = 0; i < max; i++) {
+		getline(fp, line);
+		istringstream fp_word(line);
+		string word;
+		int count = 0;
+
+		fp_word >> word;
+		first[i].set_name(word);
+		fp_word >> word;
+		
+		while(fp_word >> word) {
+			first[i].set_subdata(count, word);
+			count++;
+		}
+		first[i].set_max(count);
+	}
+
+	for(int i = 0; i < max; i++) {
+		cout << first[i].get() << ": ";
+		for(int j = 0; j < first[i].get_max(); j++) {
+			cout << first[i].at(j) << " ";
+		}
+		cout << endl;
+	}
+
+	fp.close();
 }
