@@ -7,4 +7,31 @@ hw1:
 
 hw2:
 
-	make Parser Generator, Parser Table, Parser.
+	class Data:
+	use to store data.
+
+	set:
+	use to make set.txt.
+
+		function:
+
+			first to make first list
+			follow to make follow list
+
+	lltable:
+	use to make lltable.txt
+	only one function.
+
+	use:
+
+		./set -> make set.txt
+		./lltable -> make lltable.txt
+
+	compile:
+
+		make -f Makefile
+
+	environment:
+
+		ubuntu 14.04.2 LTS
+		c++
