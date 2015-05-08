@@ -1,8 +1,8 @@
 #Compiler homework
 
-##Hw1:
+##HW1
 
-**Use:**
+**Use**
 
 > ./a.out (file name)
 
@@ -12,24 +12,24 @@
 	output file: "token.txt".
 ```
 
-**Compile:**
+**Compile**
 
 ```
 	gcc lexer.cpp
 ```
 
-**Environment:**
+**Environment**
 
 ```
 	ubuntu 14.04.2 LTS
 ```
-**Language:**
+**Language**
 
 ```
 	c++
 ```
 
-**File:**
+**File**
 
 > lexer.cpp:
 
@@ -38,9 +38,9 @@
 	and make a token list.
 ```
 
-##Hw2:
+##HW2:
 
-**Use:**
+**Use**
 
 > ./set
 
@@ -58,24 +58,24 @@
 	output file: "lltable.txt"
 ```
 
-**Compile:**
+**Compile**
 
 ```
 	make -f Makefile
 ```
 
-**Environment:**
+**Environment**
 
 ```
 	ubuntu 14.04.2 LTS
 ```
-**Language:**
+**Language**
 
 ```
 	c++
 ```
 
-**File:**
+**File**
 
 > Data.h, Data.cpp:
 
