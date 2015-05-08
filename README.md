@@ -7,7 +7,7 @@
 
 ##hw2:
 
-**use:**
+**1. use:**
 
 >	./set
 
@@ -17,29 +17,38 @@
 
 - make lltable.txt
 
-**compile:**
+**2. compile:**
 
 >	make -f Makefile
 
-**environment:**
+**3. environment:**
 
 >	ubuntu 14.04.2 LTS
 
 >	c++
 
-**file:**
+**4. file:**
 
 - Data.h, Data.cpp:
 
+```
 	use to store data.
+```
 
 - set.cpp:
 
+```
 	use to make set.txt.
+
 	function first to make first list
+
 	function follow to make follow list
+```
 
 - lltable.cpp:
 
+```
 	use to make lltable.txt
+
 	only one function.
+```
