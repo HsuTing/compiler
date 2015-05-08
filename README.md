@@ -9,13 +9,9 @@
 
 **1. use:**
 
->	./set
+>	./set -> make set.txt
 
-- make set.txt
-
->	./lltable
-
-- make lltable.txt
+>	./lltable -> make lltable.txt
 
 **2. compile:**
 
@@ -23,9 +19,11 @@
 
 **3. environment:**
 
->	ubuntu 14.04.2 LTS
+```
+	ubuntu 14.04.2 LTS
 
->	c++
+	c++
+```
 
 **4. file:**
 
