@@ -1,156 +1,166 @@
 lltable
-s                   | int                 | s->Program 
-s                   | char                | s->Program 
-s                   | double              | s->Program 
-s                   | float               | s->Program 
-Program             | int                 | Program->DeclList 
-Program             | char                | Program->DeclList 
-Program             | double              | Program->DeclList 
-Program             | float               | Program->DeclList 
-DeclList            | int                 | DeclList->DeclList' 
-DeclList            | char                | DeclList->DeclList' 
-DeclList            | double              | DeclList->DeclList' 
-DeclList            | float               | DeclList->DeclList' 
-DeclList'           | int                 | DeclList'->Type 
-DeclList'           | char                | DeclList'->Type 
-DeclList'           | double              | DeclList'->Type 
-DeclList'           | float               | DeclList'->Type 
-Decl                | ;                   | Decl->VarDecl' 
-Decl                | [                   | Decl->VarDecl' 
-Decl                | (                   | Decl->VarDecl' 
-VarDecl             | int                 | VarDecl->Type 
-VarDecl             | char                | VarDecl->Type 
-VarDecl             | double              | VarDecl->Type 
-VarDecl             | float               | VarDecl->Type 
-VarDecl'            | ;                   | VarDecl'->; 
-VarDecl'            | [                   | VarDecl'->; 
-FunDecl             | (                   | FunDecl->( 
-VarDeclList         | int                 | VarDeclList->VarDecl 
-VarDeclList         | char                | VarDeclList->VarDecl 
-VarDeclList         | double              | VarDeclList->VarDecl 
-VarDeclList         | float               | VarDeclList->VarDecl 
-ParamDeclList       | int                 | ParamDeclList->ParamDeclListTail 
-ParamDeclList       | char                | ParamDeclList->ParamDeclListTail 
-ParamDeclList       | double              | ParamDeclList->ParamDeclListTail 
-ParamDeclList       | float               | ParamDeclList->ParamDeclListTail 
-ParamDeclListTail   | int                 | ParamDeclListTail->ParamDecl 
-ParamDeclListTail   | char                | ParamDeclListTail->ParamDecl 
-ParamDeclListTail   | double              | ParamDeclListTail->ParamDecl 
-ParamDeclListTail   | float               | ParamDeclListTail->ParamDecl 
-ParamDeclListTail'  | ,                   | ParamDeclListTail'->, 
-ParamDecl           | int                 | ParamDecl->Type 
-ParamDecl           | char                | ParamDecl->Type 
-ParamDecl           | double              | ParamDecl->Type 
-ParamDecl           | float               | ParamDecl->Type 
-ParamDecl'          | [                   | ParamDecl'->[ 
-Block               | {                   | Block->{ 
-Type                | int                 | Type->int 
-Type                | char                | Type->int 
-Type                | double              | Type->int 
-Type                | float               | Type->int 
-StmtList            | ;                   | StmtList->Stmt 
-StmtList            | -                   | StmtList->Stmt 
-StmtList            | !                   | StmtList->Stmt 
-StmtList            | num                 | StmtList->Stmt 
-StmtList            | (                   | StmtList->Stmt 
-StmtList            | id                  | StmtList->Stmt 
-StmtList            | return              | StmtList->Stmt 
-StmtList            | break               | StmtList->Stmt 
-StmtList            | if                  | StmtList->Stmt 
-StmtList            | while               | StmtList->Stmt 
-StmtList            | {                   | StmtList->Stmt 
-StmtList            | print               | StmtList->Stmt 
-StmtList'           | ;                   | StmtList'->StmtList 
-StmtList'           | -                   | StmtList'->StmtList 
-StmtList'           | !                   | StmtList'->StmtList 
-StmtList'           | num                 | StmtList'->StmtList 
-StmtList'           | (                   | StmtList'->StmtList 
-StmtList'           | id                  | StmtList'->StmtList 
-StmtList'           | return              | StmtList'->StmtList 
-StmtList'           | break               | StmtList'->StmtList 
-StmtList'           | if                  | StmtList'->StmtList 
-StmtList'           | while               | StmtList'->StmtList 
-StmtList'           | {                   | StmtList'->StmtList 
-StmtList'           | print               | StmtList'->StmtList 
-Stmt                | ;                   | Stmt->; 
-Stmt                | -                   | Stmt->; 
-Stmt                | !                   | Stmt->; 
-Stmt                | num                 | Stmt->; 
-Stmt                | (                   | Stmt->; 
-Stmt                | id                  | Stmt->; 
-Stmt                | return              | Stmt->; 
-Stmt                | break               | Stmt->; 
-Stmt                | if                  | Stmt->; 
-Stmt                | while               | Stmt->; 
-Stmt                | {                   | Stmt->; 
-Stmt                | print               | Stmt->; 
-Expr                | -                   | Expr->UnaryOp 
-Expr                | !                   | Expr->UnaryOp 
-Expr                | num                 | Expr->UnaryOp 
-Expr                | (                   | Expr->UnaryOp 
-Expr                | id                  | Expr->UnaryOp 
-ExprIdTail          | +                   | ExprIdTail->Expr' 
-ExprIdTail          | -                   | ExprIdTail->Expr' 
-ExprIdTail          | *                   | ExprIdTail->Expr' 
-ExprIdTail          | /                   | ExprIdTail->Expr' 
-ExprIdTail          | ==                  | ExprIdTail->Expr' 
-ExprIdTail          | !=                  | ExprIdTail->Expr' 
-ExprIdTail          | <                   | ExprIdTail->Expr' 
-ExprIdTail          | <=                  | ExprIdTail->Expr' 
-ExprIdTail          | >                   | ExprIdTail->Expr' 
-ExprIdTail          | >=                  | ExprIdTail->Expr' 
-ExprIdTail          | &&                  | ExprIdTail->Expr' 
-ExprIdTail          | ||                  | ExprIdTail->Expr' 
-ExprIdTail          | (                   | ExprIdTail->Expr' 
-ExprIdTail          | [                   | ExprIdTail->Expr' 
-ExprIdTail          | =                   | ExprIdTail->Expr' 
-ExprArrayTail       | +                   | ExprArrayTail->Expr' 
-ExprArrayTail       | -                   | ExprArrayTail->Expr' 
-ExprArrayTail       | *                   | ExprArrayTail->Expr' 
-ExprArrayTail       | /                   | ExprArrayTail->Expr' 
-ExprArrayTail       | ==                  | ExprArrayTail->Expr' 
-ExprArrayTail       | !=                  | ExprArrayTail->Expr' 
-ExprArrayTail       | <                   | ExprArrayTail->Expr' 
-ExprArrayTail       | <=                  | ExprArrayTail->Expr' 
-ExprArrayTail       | >                   | ExprArrayTail->Expr' 
-ExprArrayTail       | >=                  | ExprArrayTail->Expr' 
-ExprArrayTail       | &&                  | ExprArrayTail->Expr' 
-ExprArrayTail       | ||                  | ExprArrayTail->Expr' 
-ExprArrayTail       | =                   | ExprArrayTail->Expr' 
-Expr'               | +                   | Expr'->BinOp 
-Expr'               | -                   | Expr'->BinOp 
-Expr'               | *                   | Expr'->BinOp 
-Expr'               | /                   | Expr'->BinOp 
-Expr'               | ==                  | Expr'->BinOp 
-Expr'               | !=                  | Expr'->BinOp 
-Expr'               | <                   | Expr'->BinOp 
-Expr'               | <=                  | Expr'->BinOp 
-Expr'               | >                   | Expr'->BinOp 
-Expr'               | >=                  | Expr'->BinOp 
-Expr'               | &&                  | Expr'->BinOp 
-Expr'               | ||                  | Expr'->BinOp 
-ExprList            | -                   | ExprList->ExprListTail 
-ExprList            | !                   | ExprList->ExprListTail 
-ExprList            | num                 | ExprList->ExprListTail 
-ExprList            | (                   | ExprList->ExprListTail 
-ExprList            | id                  | ExprList->ExprListTail 
-ExprListTail        | -                   | ExprListTail->Expr 
-ExprListTail        | !                   | ExprListTail->Expr 
-ExprListTail        | num                 | ExprListTail->Expr 
-ExprListTail        | (                   | ExprListTail->Expr 
-ExprListTail        | id                  | ExprListTail->Expr 
-ExprListTail'       | ,                   | ExprListTail'->, 
-UnaryOp             | -                   | UnaryOp->- 
-UnaryOp             | !                   | UnaryOp->- 
-BinOp               | +                   | BinOp->+ 
-BinOp               | -                   | BinOp->+ 
-BinOp               | *                   | BinOp->+ 
-BinOp               | /                   | BinOp->+ 
-BinOp               | ==                  | BinOp->+ 
-BinOp               | !=                  | BinOp->+ 
-BinOp               | <                   | BinOp->+ 
-BinOp               | <=                  | BinOp->+ 
-BinOp               | >                   | BinOp->+ 
-BinOp               | >=                  | BinOp->+ 
-BinOp               | &&                  | BinOp->+ 
-BinOp               | ||                  | BinOp->+ 
+s                   | int                 | s -> Program $ 
+s                   | char                | s -> Program $ 
+s                   | double              | s -> Program $ 
+s                   | float               | s -> Program $ 
+s                   | epsilon             | s -> Program $ 
+Program             | int                 | Program -> DeclList 
+Program             | char                | Program -> DeclList 
+Program             | double              | Program -> DeclList 
+Program             | float               | Program -> DeclList 
+Program             | epsilon             | Program -> DeclList 
+DeclList            | int                 | DeclList -> DeclList' DeclList 
+DeclList            | char                | DeclList -> DeclList' DeclList 
+DeclList            | double              | DeclList -> DeclList' DeclList 
+DeclList            | float               | DeclList -> DeclList' DeclList 
+DeclList            | epsilon             | DeclList -> epsilon 
+DeclList'           | int                 | DeclList' -> Type id Decl 
+DeclList'           | char                | DeclList' -> Type id Decl 
+DeclList'           | double              | DeclList' -> Type id Decl 
+DeclList'           | float               | DeclList' -> Type id Decl 
+Decl                | ;                   | Decl -> VarDecl' 
+Decl                | [                   | Decl -> VarDecl' 
+VarDecl             | int                 | VarDecl -> Type id VarDecl' 
+VarDecl             | char                | VarDecl -> Type id VarDecl' 
+VarDecl             | double              | VarDecl -> Type id VarDecl' 
+VarDecl             | float               | VarDecl -> Type id VarDecl' 
+VarDecl'            | ;                   | VarDecl' -> ; 
+VarDecl'            | [                   | VarDecl' -> [ num ] ; 
+FunDecl             | (                   | FunDecl -> ( ParamDeclList ) Block 
+VarDeclList         | int                 | VarDeclList -> VarDecl VarDeclList 
+VarDeclList         | char                | VarDeclList -> VarDecl VarDeclList 
+VarDeclList         | double              | VarDeclList -> VarDecl VarDeclList 
+VarDeclList         | float               | VarDeclList -> VarDecl VarDeclList 
+VarDeclList         | epsilon             | VarDeclList -> epsilon 
+ParamDeclList       | int                 | ParamDeclList -> ParamDeclListTail 
+ParamDeclList       | char                | ParamDeclList -> ParamDeclListTail 
+ParamDeclList       | double              | ParamDeclList -> ParamDeclListTail 
+ParamDeclList       | float               | ParamDeclList -> ParamDeclListTail 
+ParamDeclList       | epsilon             | ParamDeclList -> epsilon 
+ParamDeclListTail   | int                 | ParamDeclListTail -> ParamDecl ParamDeclListTail' 
+ParamDeclListTail   | char                | ParamDeclListTail -> ParamDecl ParamDeclListTail' 
+ParamDeclListTail   | double              | ParamDeclListTail -> ParamDecl ParamDeclListTail' 
+ParamDeclListTail   | float               | ParamDeclListTail -> ParamDecl ParamDeclListTail' 
+ParamDeclListTail'  | ,                   | ParamDeclListTail' -> , ParamDeclListTail 
+ParamDeclListTail'  | epsilon             | ParamDeclListTail' -> epsilon 
+ParamDecl           | int                 | ParamDecl -> Type id ParamDecl' 
+ParamDecl           | char                | ParamDecl -> Type id ParamDecl' 
+ParamDecl           | double              | ParamDecl -> Type id ParamDecl' 
+ParamDecl           | float               | ParamDecl -> Type id ParamDecl' 
+ParamDecl'          | [                   | ParamDecl' -> [ ] 
+ParamDecl'          | epsilon             | ParamDecl' -> epsilon 
+Block               | {                   | Block -> { VarDeclList StmtList } 
+Type                | int                 | Type -> int 
+Type                | char                | Type -> char 
+Type                | double              | Type -> double 
+Type                | float               | Type -> float 
+StmtList            | ;                   | StmtList -> Stmt StmtList' 
+StmtList            | -                   | StmtList -> Stmt StmtList' 
+StmtList            | !                   | StmtList -> Stmt StmtList' 
+StmtList            | num                 | StmtList -> Stmt StmtList' 
+StmtList            | (                   | StmtList -> Stmt StmtList' 
+StmtList            | id                  | StmtList -> Stmt StmtList' 
+StmtList            | return              | StmtList -> Stmt StmtList' 
+StmtList            | break               | StmtList -> Stmt StmtList' 
+StmtList            | if                  | StmtList -> Stmt StmtList' 
+StmtList            | while               | StmtList -> Stmt StmtList' 
+StmtList            | {                   | StmtList -> Stmt StmtList' 
+StmtList            | print               | StmtList -> Stmt StmtList' 
+StmtList'           | ;                   | StmtList' -> StmtList 
+StmtList'           | -                   | StmtList' -> StmtList 
+StmtList'           | !                   | StmtList' -> StmtList 
+StmtList'           | num                 | StmtList' -> StmtList 
+StmtList'           | (                   | StmtList' -> StmtList 
+StmtList'           | id                  | StmtList' -> StmtList 
+StmtList'           | return              | StmtList' -> StmtList 
+StmtList'           | break               | StmtList' -> StmtList 
+StmtList'           | if                  | StmtList' -> StmtList 
+StmtList'           | while               | StmtList' -> StmtList 
+StmtList'           | {                   | StmtList' -> StmtList 
+StmtList'           | print               | StmtList' -> StmtList 
+StmtList'           | epsilon             | StmtList' -> epsilon 
+Stmt                | ;                   | Stmt -> ; 
+Stmt                | -                   | Stmt -> Expr ; 
+Stmt                | !                   | Stmt -> Expr ; 
+Stmt                | num                 | Stmt -> Expr ; 
+Stmt                | (                   | Stmt -> Expr ; 
+Stmt                | return              | Stmt -> return Expr ; 
+Stmt                | break               | Stmt -> break ; 
+Stmt                | if                  | Stmt -> if ( Expr ) Stmt else Stmt 
+Stmt                | while               | Stmt -> while ( Expr ) Stmt 
+Stmt                | print               | Stmt -> print id ; 
+Expr                | -                   | Expr -> UnaryOp Expr 
+Expr                | !                   | Expr -> UnaryOp Expr 
+Expr                | num                 | Expr -> num Expr' 
+Expr                | (                   | Expr -> ( Expr ) Expr' 
+Expr                | id                  | Expr -> id ExprIdTail 
+ExprIdTail          | +                   | ExprIdTail -> Expr' 
+ExprIdTail          | -                   | ExprIdTail -> Expr' 
+ExprIdTail          | *                   | ExprIdTail -> Expr' 
+ExprIdTail          | /                   | ExprIdTail -> Expr' 
+ExprIdTail          | ==                  | ExprIdTail -> Expr' 
+ExprIdTail          | !=                  | ExprIdTail -> Expr' 
+ExprIdTail          | <                   | ExprIdTail -> Expr' 
+ExprIdTail          | <=                  | ExprIdTail -> Expr' 
+ExprIdTail          | >                   | ExprIdTail -> Expr' 
+ExprIdTail          | >=                  | ExprIdTail -> Expr' 
+ExprIdTail          | &&                  | ExprIdTail -> Expr' 
+ExprIdTail          | ||                  | ExprIdTail -> Expr' 
+ExprIdTail          | epsilon             | ExprIdTail -> Expr' 
+ExprIdTail          | (                   | ExprIdTail -> ( ExprList ) Expr' 
+ExprIdTail          | [                   | ExprIdTail -> [ Expr ] ExprArrayTail 
+ExprIdTail          | =                   | ExprIdTail -> = Expr 
+ExprArrayTail       | +                   | ExprArrayTail -> Expr' 
+ExprArrayTail       | -                   | ExprArrayTail -> Expr' 
+ExprArrayTail       | *                   | ExprArrayTail -> Expr' 
+ExprArrayTail       | /                   | ExprArrayTail -> Expr' 
+ExprArrayTail       | ==                  | ExprArrayTail -> Expr' 
+ExprArrayTail       | !=                  | ExprArrayTail -> Expr' 
+ExprArrayTail       | <                   | ExprArrayTail -> Expr' 
+ExprArrayTail       | <=                  | ExprArrayTail -> Expr' 
+ExprArrayTail       | >                   | ExprArrayTail -> Expr' 
+ExprArrayTail       | >=                  | ExprArrayTail -> Expr' 
+ExprArrayTail       | &&                  | ExprArrayTail -> Expr' 
+ExprArrayTail       | ||                  | ExprArrayTail -> Expr' 
+ExprArrayTail       | epsilon             | ExprArrayTail -> Expr' 
+ExprArrayTail       | =                   | ExprArrayTail -> = Expr 
+Expr'               | +                   | Expr' -> BinOp Expr 
+Expr'               | -                   | Expr' -> BinOp Expr 
+Expr'               | *                   | Expr' -> BinOp Expr 
+Expr'               | /                   | Expr' -> BinOp Expr 
+Expr'               | ==                  | Expr' -> BinOp Expr 
+Expr'               | !=                  | Expr' -> BinOp Expr 
+Expr'               | <                   | Expr' -> BinOp Expr 
+Expr'               | <=                  | Expr' -> BinOp Expr 
+Expr'               | >                   | Expr' -> BinOp Expr 
+Expr'               | >=                  | Expr' -> BinOp Expr 
+Expr'               | &&                  | Expr' -> BinOp Expr 
+Expr'               | ||                  | Expr' -> BinOp Expr 
+Expr'               | epsilon             | Expr' -> epsilon 
+ExprList            | -                   | ExprList -> ExprListTail 
+ExprList            | !                   | ExprList -> ExprListTail 
+ExprList            | num                 | ExprList -> ExprListTail 
+ExprList            | (                   | ExprList -> ExprListTail 
+ExprList            | id                  | ExprList -> ExprListTail 
+ExprList            | epsilon             | ExprList -> epsilon 
+ExprListTail        | -                   | ExprListTail -> Expr ExprListTail' 
+ExprListTail        | !                   | ExprListTail -> Expr ExprListTail' 
+ExprListTail        | num                 | ExprListTail -> Expr ExprListTail' 
+ExprListTail        | (                   | ExprListTail -> Expr ExprListTail' 
+ExprListTail        | id                  | ExprListTail -> Expr ExprListTail' 
+ExprListTail'       | ,                   | ExprListTail' -> , ExprListTail 
+ExprListTail'       | epsilon             | ExprListTail' -> epsilon 
+UnaryOp             | -                   | UnaryOp -> - 
+UnaryOp             | !                   | UnaryOp -> ! 
+BinOp               | +                   | BinOp -> + 
+BinOp               | -                   | BinOp -> - 
+BinOp               | *                   | BinOp -> * 
+BinOp               | /                   | BinOp -> / 
+BinOp               | ==                  | BinOp -> == 
+BinOp               | !=                  | BinOp -> != 
+BinOp               | <                   | BinOp -> < 
+BinOp               | <=                  | BinOp -> <= 
+BinOp               | >                   | BinOp -> > 
+BinOp               | >=                  | BinOp -> >= 
+BinOp               | &&                  | BinOp -> && 
+BinOp               | ||                  | BinOp -> || 

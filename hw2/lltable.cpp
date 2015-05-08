@@ -132,16 +132,51 @@ void lltable(Data index[], int max) {
 
 	fout << "lltable" << endl;
 	for(int i = 0; i < max; i++) {
-		int check[ first[i].get_max() ];
-		for(int j = 0; j < first[i].get_max(); j++) {
-			if(first[i].at(j) == "epsilon") {
-			}
-			else {
-				fout << setw(20) << first[i].get() << "| ";
-				fout << setw(20) << first[i].at(j) << "| ";
-				fout << index[i].get() << "->";
-				fout << index[i].at(0) << " ";
-				fout << endl;
+		for(int j = 0; j < index[i].get_check_max(); j++) {
+			for(int k = 0; k < index[i].get_max(); k++) {
+				if(index[i].find(k) == j) {
+					int temp = -1;
+					for(int l = 0; l < max; l++) {
+						if(first[l].get() == index[i].at(k)) {
+							temp = l;
+							break;
+						}
+					}
+
+					if(temp != -1) {
+						for(int l = 0; l < first[i].get_max(); l++) {
+							for(int m = 0; m < first[temp].get_max(); m++) {
+								if(first[temp].at(l) == first[i].at(m)) {
+									fout << setw(20) << index[i].get() << "| ";
+									fout << setw(20) << first[temp].at(l) << "| ";
+									fout << index[i].get() << " -> ";
+
+									for(int n = k; n < index[i].get_max(); n++) {
+										if(index[i].find(n) == j) {
+											fout << index[i].at(n) << " ";
+										}
+									}
+
+									fout << endl;
+								}
+							}
+						}
+					}
+					else {
+						fout << setw(20) << index[i].get() << "| ";
+						fout << setw(20) << index[i].at(k) << "| ";
+						fout << index[i].get() << " -> ";
+
+						for(int n = k; n < index[i].get_max(); n++) {
+							if(index[i].find(n) == j) {
+								fout << index[i].at(n) << " ";
+							}
+						}
+						fout << endl;
+					}
+
+					break;
+				}
 			}
 		}
 	}
