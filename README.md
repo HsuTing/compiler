@@ -1,10 +1,10 @@
-#compiler homework
+#Compiler homework
 
-##hw1:
+##Hw1:
 
 **1. use:**
 
-- ./a.out (file name)
+> ./a.out (file name)
 
 ```
 	input file: file name
@@ -31,19 +31,18 @@
 
 **5. file:**
 
-- lexer.cpp:
+> lexer.cpp:
 
 ```
 	input a file, analyze this file, cut the string, classify those substring,
-
 	and make a token list.
 ```
 
-##hw2:
+##Hw2:
 
 **1. use:**
 
-- ./set
+> ./set
 
 ```
 	input file: "grammar.txt"
@@ -51,7 +50,7 @@
 	output file: "set.txt"
 ```
 
-- ./lltable
+> ./lltable
 
 ```
 	inpput file: "set.txt"
@@ -78,26 +77,23 @@
 
 **5. file:**
 
-- Data.h, Data.cpp:
+> Data.h, Data.cpp:
 
 ```
 	use to store data.
 ```
 
-- set.cpp:
+> set.cpp:
 
 ```
 	use to make set.txt.
-
 	function first to make first list
-
 	function follow to make follow list
 ```
 
-- lltable.cpp:
+> lltable.cpp:
 
 ```
 	use to make lltable.txt
-
 	only one function.
 ```
