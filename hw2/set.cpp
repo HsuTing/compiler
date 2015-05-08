@@ -46,9 +46,9 @@ int main(void) {
 		cout << endl;
 
 		cout << index[i].get_check_max() << endl;
-	}
+	}*/
 
-	for(int i = 0; i < max; i++) {
+	/*for(int i = 0; i < max; i++) {
 		cout << tempdata[i].get() << ": ";
 		for(int j = 0; j < tempdata[i].get_max(); j++) {
 			if(tempdata[i].at(j) == " ") {
@@ -223,10 +223,16 @@ void find_follow(Data index[], Data tempdata[], int check[], int max, string nam
 					find(index, tempdata, check, max, index[i].at(j + 1), position);
 
 					int temp = -1;
-					for(int k = 0; k < tempdata[i].get_max(); k++) {
-						if(tempdata[i].at(k) == "epsilon") {
+					for(int k = 0; k < tempdata[position].get_max(); k++) {
+						if(tempdata[position].at(k) == "epsilon") {
 							temp = k;
 						}
+					}
+
+					if(temp != -1) {
+						tempdata[position].set_subdata(temp, " ");
+
+							find_follow(index, tempdata, check, max, index[i].at(j + 1), position);
 					}
 				}
 			}
@@ -241,9 +247,6 @@ void follow(Data tempdata[], int max) {
 				if(tempdata[i].at(j) == tempdata[i].at(k)) {
 					tempdata[i].set_subdata(k, " ");
 				}
-			}
-			if(tempdata[i].at(j) == "epsilon") {
-				tempdata[i].set_subdata(j, " ");
 			}
 		}
 	}

@@ -32,26 +32,26 @@ Follow
 s                   : 
 Program             : $ 
 DeclList            : $ 
-DeclList'           : int char double float 
-Decl                : int char double float 
-VarDecl             : int char double float 
-VarDecl'            : int char double float 
-FunDecl             : int char double float 
+DeclList'           : int char double float $ 
+Decl                : int char double float $ 
+VarDecl             : int char double float ; - ! num ( id return break if while { print 
+VarDecl'            : $ int char double float ; - ! num ( id return break if while { print 
+FunDecl             : int char double float $ 
 VarDeclList         : ; - ! num ( id return break if while { print 
 ParamDeclList       : ) 
 ParamDeclListTail   : ) 
 ParamDeclListTail'  : ) 
-ParamDecl           : , 
-ParamDecl'          : , 
-Block               : int char double float ; - ! num ( id return break if while { print else 
+ParamDecl           : , ) 
+ParamDecl'          : , ) 
+Block               : int char double float $ ; - ! num ( id return break if while { print } else 
 Type                : id 
 StmtList            : } 
 StmtList'           : } 
-Stmt                : ; - ! num ( id return break if while { print else 
-Expr                : ; ) ] , 
-ExprIdTail          : ; ) ] , 
-ExprArrayTail       : ; ) ] , 
-Expr'               : ; ) ] , 
+Stmt                : ; - ! num ( id return break if while { print } else 
+Expr                : ; ] ) , 
+ExprIdTail          : ; ] , ) 
+ExprArrayTail       : ; ] , ) 
+Expr'               : ; ] , ) 
 ExprList            : ) 
 ExprListTail        : ) 
 ExprListTail'       : ) 
