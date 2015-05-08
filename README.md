@@ -2,8 +2,42 @@
 
 ##hw1:
 
-	input main.c, analyze this file, cut the string, classify those substring,
+**1. use:**
+
+- ./a.out (file name)
+
+```
+	input file: file name
+
+	output file: "token.txt".
+```
+
+**2. compile:**
+
+```
+	gcc lexer.cpp
+```
+
+**3. environment:**
+
+```
+	ubuntu 14.04.2 LTS
+```
+**4. language:**
+
+```
+	c++
+```
+
+**5. file:**
+
+- lexer.cpp:
+
+```
+	input a file, analyze this file, cut the string, classify those substring,
+
 	and make a token list.
+```
 
 ##hw2:
 
@@ -12,13 +46,17 @@
 - ./set
 
 ```
-	make set.txt
+	input file: "grammar.txt"
+
+	output file: "set.txt"
 ```
 
 - ./lltable
 
 ```
-	make lltable.txt
+	inpput file: "set.txt"
+
+	output file: "lltable.txt"
 ```
 
 **2. compile:**
