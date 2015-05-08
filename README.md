@@ -1,26 +1,11 @@
-compiler homework
+#compiler homework
 
-hw1:
+##hw1:
 
 	input main.c, analyze this file, cut the string, classify those substring,
 	and make a token list.
 
-hw2:
-
-	class Data:
-	use to store data.
-
-	set:
-	use to make set.txt.
-
-		function:
-
-			first to make first list
-			follow to make follow list
-
-	lltable:
-	use to make lltable.txt
-	only one function.
+##hw2:
 
 	use:
 
@@ -35,3 +20,20 @@ hw2:
 
 		ubuntu 14.04.2 LTS
 		c++
+
+	file:
+
+		- Data.h, Data.cpp:
+
+			use to store data.
+
+		- set.cpp:
+
+			use to make set.txt.
+			function first to make first list
+			function follow to make follow list
+
+		- lltable.cpp:
+
+			use to make lltable.txt
+			only one function.
