@@ -2,7 +2,7 @@
 
 ##Hw1:
 
-**1. use:**
+**Use:**
 
 > ./a.out (file name)
 
@@ -12,24 +12,24 @@
 	output file: "token.txt".
 ```
 
-**2. compile:**
+**Compile:**
 
 ```
 	gcc lexer.cpp
 ```
 
-**3. environment:**
+**Environment:**
 
 ```
 	ubuntu 14.04.2 LTS
 ```
-**4. language:**
+**Language:**
 
 ```
 	c++
 ```
 
-**5. file:**
+**File:**
 
 > lexer.cpp:
 
@@ -40,7 +40,7 @@
 
 ##Hw2:
 
-**1. use:**
+**Use:**
 
 > ./set
 
@@ -58,24 +58,24 @@
 	output file: "lltable.txt"
 ```
 
-**2. compile:**
+**Compile:**
 
 ```
 	make -f Makefile
 ```
 
-**3. environment:**
+**Environment:**
 
 ```
 	ubuntu 14.04.2 LTS
 ```
-**4. language:**
+**Language:**
 
 ```
 	c++
 ```
 
-**5. file:**
+**File:**
 
 > Data.h, Data.cpp:
 
