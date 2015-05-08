@@ -7,21 +7,21 @@
 
 ##hw2:
 
-	use:
+	* use:
 
-		./set -> make set.txt
-		./lltable -> make lltable.txt
+		*./set -> make set.txt*
+		*./lltable -> make lltable.txt*
 
-	compile:
+	* compile:
 
-		> make -f Makefile
+		 *make -f Makefile*
 
-	environment:
+	* environment:
 
-		ubuntu 14.04.2 LTS
-		c++
+		- ubuntu 14.04.2 LTS
+		- c++
 
-	file:
+	* file:
 
 		- Data.h, Data.cpp:
 
