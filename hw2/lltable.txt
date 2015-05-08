@@ -3,17 +3,17 @@ s                   | int                 | s -> Program $
 s                   | char                | s -> Program $ 
 s                   | double              | s -> Program $ 
 s                   | float               | s -> Program $ 
-s                   | epsilon             | s -> Program $ 
 Program             | int                 | Program -> DeclList 
 Program             | char                | Program -> DeclList 
 Program             | double              | Program -> DeclList 
 Program             | float               | Program -> DeclList 
-Program             | epsilon             | Program -> DeclList 
+Program             | $                   | Program -> DeclList 
 DeclList            | int                 | DeclList -> DeclList' DeclList 
 DeclList            | char                | DeclList -> DeclList' DeclList 
 DeclList            | double              | DeclList -> DeclList' DeclList 
 DeclList            | float               | DeclList -> DeclList' DeclList 
-DeclList            | epsilon             | DeclList -> epsilon 
+DeclList            | $                   | DeclList -> DeclList' DeclList 
+DeclList            | $                   | DeclList -> epsilon 
 DeclList'           | int                 | DeclList' -> Type id Decl 
 DeclList'           | char                | DeclList' -> Type id Decl 
 DeclList'           | double              | DeclList' -> Type id Decl 
@@ -31,24 +31,18 @@ VarDeclList         | int                 | VarDeclList -> VarDecl VarDeclList
 VarDeclList         | char                | VarDeclList -> VarDecl VarDeclList 
 VarDeclList         | double              | VarDeclList -> VarDecl VarDeclList 
 VarDeclList         | float               | VarDeclList -> VarDecl VarDeclList 
-VarDeclList         | epsilon             | VarDeclList -> epsilon 
 ParamDeclList       | int                 | ParamDeclList -> ParamDeclListTail 
 ParamDeclList       | char                | ParamDeclList -> ParamDeclListTail 
 ParamDeclList       | double              | ParamDeclList -> ParamDeclListTail 
 ParamDeclList       | float               | ParamDeclList -> ParamDeclListTail 
-ParamDeclList       | epsilon             | ParamDeclList -> epsilon 
 ParamDeclListTail   | int                 | ParamDeclListTail -> ParamDecl ParamDeclListTail' 
 ParamDeclListTail   | char                | ParamDeclListTail -> ParamDecl ParamDeclListTail' 
 ParamDeclListTail   | double              | ParamDeclListTail -> ParamDecl ParamDeclListTail' 
 ParamDeclListTail   | float               | ParamDeclListTail -> ParamDecl ParamDeclListTail' 
-ParamDeclListTail'  | ,                   | ParamDeclListTail' -> , ParamDeclListTail 
-ParamDeclListTail'  | epsilon             | ParamDeclListTail' -> epsilon 
 ParamDecl           | int                 | ParamDecl -> Type id ParamDecl' 
 ParamDecl           | char                | ParamDecl -> Type id ParamDecl' 
 ParamDecl           | double              | ParamDecl -> Type id ParamDecl' 
 ParamDecl           | float               | ParamDecl -> Type id ParamDecl' 
-ParamDecl'          | [                   | ParamDecl' -> [ ] 
-ParamDecl'          | epsilon             | ParamDecl' -> epsilon 
 Block               | {                   | Block -> { VarDeclList StmtList } 
 Type                | int                 | Type -> int 
 Type                | char                | Type -> char 
@@ -78,7 +72,6 @@ StmtList'           | if                  | StmtList' -> StmtList
 StmtList'           | while               | StmtList' -> StmtList 
 StmtList'           | {                   | StmtList' -> StmtList 
 StmtList'           | print               | StmtList' -> StmtList 
-StmtList'           | epsilon             | StmtList' -> epsilon 
 Stmt                | ;                   | Stmt -> ; 
 Stmt                | -                   | Stmt -> Expr ; 
 Stmt                | !                   | Stmt -> Expr ; 
@@ -106,10 +99,6 @@ ExprIdTail          | >                   | ExprIdTail -> Expr'
 ExprIdTail          | >=                  | ExprIdTail -> Expr' 
 ExprIdTail          | &&                  | ExprIdTail -> Expr' 
 ExprIdTail          | ||                  | ExprIdTail -> Expr' 
-ExprIdTail          | epsilon             | ExprIdTail -> Expr' 
-ExprIdTail          | (                   | ExprIdTail -> ( ExprList ) Expr' 
-ExprIdTail          | [                   | ExprIdTail -> [ Expr ] ExprArrayTail 
-ExprIdTail          | =                   | ExprIdTail -> = Expr 
 ExprArrayTail       | +                   | ExprArrayTail -> Expr' 
 ExprArrayTail       | -                   | ExprArrayTail -> Expr' 
 ExprArrayTail       | *                   | ExprArrayTail -> Expr' 
@@ -122,8 +111,6 @@ ExprArrayTail       | >                   | ExprArrayTail -> Expr'
 ExprArrayTail       | >=                  | ExprArrayTail -> Expr' 
 ExprArrayTail       | &&                  | ExprArrayTail -> Expr' 
 ExprArrayTail       | ||                  | ExprArrayTail -> Expr' 
-ExprArrayTail       | epsilon             | ExprArrayTail -> Expr' 
-ExprArrayTail       | =                   | ExprArrayTail -> = Expr 
 Expr'               | +                   | Expr' -> BinOp Expr 
 Expr'               | -                   | Expr' -> BinOp Expr 
 Expr'               | *                   | Expr' -> BinOp Expr 
@@ -136,20 +123,16 @@ Expr'               | >                   | Expr' -> BinOp Expr
 Expr'               | >=                  | Expr' -> BinOp Expr 
 Expr'               | &&                  | Expr' -> BinOp Expr 
 Expr'               | ||                  | Expr' -> BinOp Expr 
-Expr'               | epsilon             | Expr' -> epsilon 
 ExprList            | -                   | ExprList -> ExprListTail 
 ExprList            | !                   | ExprList -> ExprListTail 
 ExprList            | num                 | ExprList -> ExprListTail 
 ExprList            | (                   | ExprList -> ExprListTail 
 ExprList            | id                  | ExprList -> ExprListTail 
-ExprList            | epsilon             | ExprList -> epsilon 
 ExprListTail        | -                   | ExprListTail -> Expr ExprListTail' 
 ExprListTail        | !                   | ExprListTail -> Expr ExprListTail' 
 ExprListTail        | num                 | ExprListTail -> Expr ExprListTail' 
 ExprListTail        | (                   | ExprListTail -> Expr ExprListTail' 
 ExprListTail        | id                  | ExprListTail -> Expr ExprListTail' 
-ExprListTail'       | ,                   | ExprListTail' -> , ExprListTail 
-ExprListTail'       | epsilon             | ExprListTail' -> epsilon 
 UnaryOp             | -                   | UnaryOp -> - 
 UnaryOp             | !                   | UnaryOp -> ! 
 BinOp               | +                   | BinOp -> + 

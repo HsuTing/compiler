@@ -9,6 +9,7 @@ using namespace std;
 
 int count_index();
 void input_grammar(Data index[]);
+int find(Data first[], int max, int position);
 void lltable(Data index[], int max);
 
 int main(void) {
@@ -83,6 +84,15 @@ void input_grammar(Data index[]) {
 	fp.close();
 }
 
+int find(Data first[], int max, int position) {
+	for(int i = 0; i < first[position].get_max(); i++) {
+		if(first[position].at(i) == "epsilon") {
+			return 1;
+		}
+	}
+	return 0;
+}
+
 void lltable(Data index[], int max) {
 	Data first[max], follow[max];
 	ifstream fp("set.txt");
@@ -146,7 +156,7 @@ void lltable(Data index[], int max) {
 					if(temp != -1) {
 						for(int l = 0; l < first[i].get_max(); l++) {
 							for(int m = 0; m < first[temp].get_max(); m++) {
-								if(first[temp].at(l) == first[i].at(m)) {
+								if(first[temp].at(l) == first[i].at(m) && first[temp].at(l) != "epsilon" && first[i].at(m) != "epsilon") {
 									fout << setw(20) << index[i].get() << "| ";
 									fout << setw(20) << first[temp].at(l) << "| ";
 									fout << index[i].get() << " -> ";
@@ -161,18 +171,74 @@ void lltable(Data index[], int max) {
 								}
 							}
 						}
+
+						if(find(first, max, i) == 1) {
+							for(int l = 0; l < first[i].get_max(); l++) {
+								for(int m = 0; m < follow[i].get_max(); m++) {
+									if(first[i].at(l) == follow[i].at(m)) {
+										fout << setw(20) << index[i].get() << "| ";
+										fout << setw(20) << follow[i].at(m) << "| ";
+										fout << index[i].get() << " -> ";
+
+										for(int n = k; n < index[i].get_max(); n++) {
+											if(index[i].find(n) == j) {
+												fout << index[i].at(n) << " ";
+											}
+										}
+
+										fout << endl;
+									}
+								}
+							}
+
+							for(int l = 0; l < follow[i].get_max(); l++) {
+								if(follow[i].at(l) == "$") {
+									fout << setw(20) << index[i].get() << "| ";
+									fout << setw(20) << "$" << "| ";
+									fout << index[i].get() << " -> ";
+
+									for(int n = k; n < index[i].get_max(); n++) {
+										if(index[i].find(n) == j) {
+											fout << index[i].at(n) << " ";
+										}
+									}
+
+									fout << endl;
+								}
+							}
+
+						}
 					}
 					else {
-						fout << setw(20) << index[i].get() << "| ";
-						fout << setw(20) << index[i].at(k) << "| ";
-						fout << index[i].get() << " -> ";
+						if(find(first, max, i) == 0) {
+							fout << setw(20) << index[i].get() << "| ";
+							fout << setw(20) << index[i].at(k) << "| ";
+							fout << index[i].get() << " -> ";
 
-						for(int n = k; n < index[i].get_max(); n++) {
-							if(index[i].find(n) == j) {
-								fout << index[i].at(n) << " ";
+							for(int n = k; n < index[i].get_max(); n++) {
+								if(index[i].find(n) == j) {
+									fout << index[i].at(n) << " ";
+								}
+							}
+							fout << endl;
+						}
+						else {
+							for(int l = 0; l < follow[i].get_max(); l++) {
+								if(follow[i].at(l) == "$") {
+									fout << setw(20) << index[i].get() << "| ";
+									fout << setw(20) << "$" << "| ";
+									fout << index[i].get() << " -> ";
+									
+									for(int n = k; n < index[i].get_max(); n++) {
+										if(index[i].find(n) == j) {
+											fout << index[i].at(n) << " ";
+										}
+									}
+
+									fout << endl;
+								}
 							}
 						}
-						fout << endl;
 					}
 
 					break;
