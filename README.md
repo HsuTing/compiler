@@ -7,33 +7,33 @@
 
 ##hw2:
 
-#####use:
+**use:**
 
-		*./set -> make set.txt*
-		*./lltable -> make lltable.txt*
+	- ./set -> make set.txt
+	- ./lltable -> make lltable.txt
 
-	* compile:
+**compile:**
 
-**make -f Makefile**
+	make -f Makefile
 
-	* environment:
+**environment:**
 
-		- ubuntu 14.04.2 LTS
-		- c++
+	- ubuntu 14.04.2 LTS
+	- c++
 
-	* file:
+**file:**
 
-		- Data.h, Data.cpp:
+	- Data.h, Data.cpp:
 
-			use to store data.
+		use to store data.
 
-		- set.cpp:
+	- set.cpp:
 
-			use to make set.txt.
-			function first to make first list
-			function follow to make follow list
+		use to make set.txt.
+		function first to make first list
+		function follow to make follow list
 
-		- lltable.cpp:
+	- lltable.cpp:
 
-			use to make lltable.txt
-			only one function.
+		use to make lltable.txt
+		only one function.
