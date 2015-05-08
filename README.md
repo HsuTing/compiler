@@ -7,14 +7,14 @@
 
 ##hw2:
 
-	* use:
+#####use:
 
 		*./set -> make set.txt*
 		*./lltable -> make lltable.txt*
 
 	* compile:
 
-		 **make -f Makefile**
+**make -f Makefile**
 
 	* environment:
 
