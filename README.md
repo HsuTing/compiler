@@ -14,7 +14,7 @@
 
 	* compile:
 
-		 *make -f Makefile*
+		 **make -f Makefile**
 
 	* environment:
 
