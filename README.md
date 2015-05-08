@@ -9,23 +9,36 @@
 
 **1. use:**
 
->	./set -> make set.txt
+- ./set
 
->	./lltable -> make lltable.txt
+```
+	make set.txt
+```
+
+- ./lltable
+
+```
+	make lltable.txt
+```
 
 **2. compile:**
 
->	make -f Makefile
+```
+	make -f Makefile
+```
 
 **3. environment:**
 
 ```
 	ubuntu 14.04.2 LTS
+```
+**4. language:**
 
+```
 	c++
 ```
 
-**4. file:**
+**5. file:**
 
 - Data.h, Data.cpp:
 
