@@ -10,6 +10,7 @@
 **use:**
 
 >	./set -> make set.txt
+
 >	./lltable -> make lltable.txt
 
 **compile:**
@@ -19,6 +20,7 @@
 **environment:**
 
 >	ubuntu 14.04.2 LTS
+
 >	c++
 
 **file:**
